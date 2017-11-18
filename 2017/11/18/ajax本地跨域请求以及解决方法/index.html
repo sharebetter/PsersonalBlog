@@ -8,16 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>ZhmBlog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="start from zero">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/tags/写作/index.html">
+  <meta name="description" content="这是描述部分">
+<meta name="keywords" content="JavaScript,Ajax">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ajax本地跨域请求以及解决方法">
+<meta property="og:url" content="http://yoursite.com/2017/11/18/ajax本地跨域请求以及解决方法/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="start from zero">
+<meta property="og:description" content="这是描述部分">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-11-18T11:31:23.289Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
-<meta name="twitter:description" content="start from zero">
+<meta name="twitter:title" content="ajax本地跨域请求以及解决方法">
+<meta name="twitter:description" content="这是描述部分">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -58,10 +60,11 @@
 		<nav class="header-menu">
 			<ul>
 			
-				<li><a href="/">主页</a></li>
+				<li><a style="color:black" href="/">主页</a></li>
 	        
-				<li><a href="/archives/">全部文章</a></li>
+				<li><a style="color:black" href="/archives/">全部文章</a></li>
 	        
+	        	 <iframe style="margin-top:5px" frameborder="no" border="0" marginwidth="0" marginheight="0" width=270 height=52 src="http://music.163.com/outchain/player?type=2&id=32192436&auto=0&height=32"></iframe>       
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
@@ -71,6 +74,7 @@
     			
             
 		</nav>
+		
 		<nav class="header-nav">
 			<div class="social">
 				
@@ -138,120 +142,206 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-ajax本地跨域请求以及解决方法" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/11/18/addmore/" class="archive-article-date">
-  	<time datetime="2017-11-18T08:40:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-18</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/11/18/addmore/">addmore</a>
+    <h1 class="article-title" itemprop="name">
+      ajax本地跨域请求以及解决方法
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/11/18/ajax本地跨域请求以及解决方法/" class="archive-article-date">
+  	<time datetime="2017-11-18T08:40:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="什么是跨域？"><a href="#什么是跨域？" class="headerlink" title="什么是跨域？"></a>什么是跨域？</h2><p>  我们通常所说的跨域是狭义的，是由浏览器同源策略限制的一类请求场景。所谓同源是指”协议+域名+端口”三者相同，即便两个不同的域名指向同一个ip地址，也非同源，只要没有同时满足这三个条件的请求即为跨域请求，跨域请求控制台一般会出现类似错误:<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">XMLHttpRequest cannot load http://xxxxx.php.</div><div class="line">No &apos;Access-Control-Allow-Origin&apos; header is present on the requested resource.</div><div class="line">Origin &apos;http://xxx&apos; is therefore not allowed access.</div></pre></td></tr></table></figure></p>
+<h2 id="设置本地跨域"><a href="#设置本地跨域" class="headerlink" title="设置本地跨域"></a>设置本地跨域</h2><p>  首先我们在本地设置本地跨域请求，首先需要安装wamp服务器,其默认的localhost端口为80，我们找到wamp的安装路径，如我的是安装在D盘，则在D:\wamp\bin\apache  \apache2.4.9\conf\中打开httpd.conf文件，在Listen [::0]:80语句下添加Listen [::0]:8011，点击保存，重启wamp或Apach，这样我们就配置了一个localhost:8011端口。接下来在wamp\www文件夹中新建test1和test2文件夹，在test1下新建index文件，在test2文件夹下新建index2.php文件。</p>
+<h3 id="方法一："><a href="#方法一：" class="headerlink" title="方法一："></a>方法一：</h3><p>1）test1/index.html文件js代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line">   $(function()&#123;</div><div class="line">        $.ajax( &#123;</div><div class="line">            url: &quot;http://localhost:8011/test2/index2.php&quot;,</div><div class="line">            type: &apos;get&apos;,</div><div class="line">           dataType: &apos;jsonp&apos;, // 请求方式为jsonp</div><div class="line">           jsonpCallback: &quot;onBack&quot;, // 自定义回调函数名</div><div class="line">           success: function(data)&#123;</div><div class="line">              console.info(data)</div><div class="line">           &#125;</div><div class="line">       &#125;);</div><div class="line"> &#125;);</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+<p>2）test2/index2.php文件代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line">     $callback=$_GET[&apos;callback&apos;];</div><div class="line">     $data=array(&apos;a&apos;=&gt;1,&apos;b&apos;=&gt;2,&apos;c&apos;=&gt;3);</div><div class="line">     echo $callback.&apos;(&apos;.json_encode($data).&apos;)&apos;;</div><div class="line">?&gt;</div></pre></td></tr></table></figure></p>
+<p>这样就可以进行ajax访问了。</p>
+<h3 id="方法二："><a href="#方法二：" class="headerlink" title="方法二："></a>方法二：</h3><p>1）test1/index.html文件js代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line">  function dosomething(jsondata)&#123;</div><div class="line">        console.log(jsondata)</div><div class="line">  &#125;</div><div class="line">&lt;/script&gt;</div><div class="line">&lt;script src=&quot;http://localhost:8011/test2/index2.php?callback=dosomething&quot;&gt;&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+<p>2）test2/index2.php文件代码同方法一的test2/index2.php</p>
+<p>这样第二种方法也ok</p>
+<h3 id="方法三："><a href="#方法三：" class="headerlink" title="方法三："></a>方法三：</h3><p>1）test1/index.html文件js代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">$.ajax(&#123;</div><div class="line">     url: &apos;http://localhost:8011/test2/index2.php?callback=myFunction&apos;,</div><div class="line">     type: &apos;get&apos;,</div><div class="line">     data: &#123;&#125;,</div><div class="line">     success: function(json)&#123;</div><div class="line">     console.log(json)</div><div class="line">     &#125;,</div><div class="line">     error: function()&#123;</div><div class="line">     alert(&apos;fail&apos;);</div><div class="line">     &#125;</div><div class="line"> &#125;);</div></pre></td></tr></table></figure></p>
+<p>2）test2/index2.php文件代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line">     header(&apos;Access-Control-Allow-Origin:*&apos;);</div><div class="line">     $callback=$_GET[&apos;callback&apos;];</div><div class="line">     $data=array(&apos;a&apos;=&gt;1,&apos;b&apos;=&gt;2,&apos;c&apos;=&gt;3);</div><div class="line">     echo $callback.&apos;(&apos;.json_encode($data).&apos;)&apos;;</div><div class="line">?&gt;</div></pre></td></tr></table></figure></p>
+<p>这样第三种方法也行啦</p>
+<h2 id="请求方式："><a href="#请求方式：" class="headerlink" title="请求方式："></a>请求方式：</h2><p>1）在html的ajax请求中dataType: ‘jsonp’,这句是关键，没有这句就没法进行ajax请求。这也就是jsonp的跨域请求方式。缺点就是只能通过GET的请求方法，不能用POST。</p>
+<p>2）第二种方法是利用script的src不受同源限制，进行的方法回调进行跨域请求。</p>
+<p>3）第三种方法是跨域资源共享（CORS），通过在请求文件添加header(‘Access-Control-Allow-Origin:*’);[//指定允许其他域名访问]实现跨域的，可以多种请求方法。</p>
+<p>4）还有其他的方法，这边就不一 一讲述啦，如有需要大家可以参考其他优秀文章</p>
+<h2 id="结语："><a href="#结语：" class="headerlink" title="结语："></a>结语：</h2><p>新人学习ajax跨域的小测试，如有不足之处，欢迎指正哈！</p>
+<h4 id="github下载地址：https-github-com-sharebetter-ajax"><a href="#github下载地址：https-github-com-sharebetter-ajax" class="headerlink" title="github下载地址：https://github.com/sharebetter/ajax"></a>github下载地址：<a href="https://github.com/sharebetter/ajax" target="_blank" rel="external">https://github.com/sharebetter/ajax</a></h4>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">写作</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Ajax</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/随笔//" class="article-tag-list-link color3">随笔</a>
+        			<a href="/categories/前端知识//" class="article-tag-list-link color5">前端知识</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/11/18/ajax本地跨域请求以及解决方法/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/11/18/thirdfile/" class="archive-article-date">
-  	<time datetime="2017-11-18T08:40:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-18</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2017/11/18/markdown/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          markdown学习
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/11/18/thirdfile/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">学习计算机的体会与认识</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/11/18/thirdfile/">addmore</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">写作</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/随笔//" class="article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        
+        
+    </div>
+</aside>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+
   
   
-    </div></section>
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -274,9 +364,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
@@ -328,19 +418,19 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">写作</a>
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">前端css</a>
+                <a href="javascript:void(0)" class="js-tag color5">Ajax</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">javaScript</a>
+                <a href="javascript:void(0)" class="js-tag color4">小知识</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">tags</a>
+                <a href="javascript:void(0)" class="js-tag color3">学习</a>
               </li>
             
             <div class="clearfix"></div>
