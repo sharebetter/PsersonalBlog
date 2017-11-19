@@ -73,6 +73,10 @@
     			<a style="font-size:16px;" q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">搜索文章</a>
     			
             
+    			
+    			<a style="font-size:16px;" q-on="click: openSlider(e, 'friends')" href="javascript:void(0)">友链</a>
+    			
+            
 		</nav>
 		
 		<nav class="header-nav">
@@ -420,13 +424,21 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
       
       
     
+      
+      
+      
+    
     
 
     <ul style="width: 70%">
     
     
       
-      <li style="width: 100%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">搜索文章</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">搜索文章</a></li>
+      
+        
+      
+      <li style="width: 50%" q-on="click: openSlider(e, 'friends')"><a href="javascript:void(0)" q-class="active:friends">友链</a></li>
       
         
     </ul>
@@ -455,11 +467,11 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">学习</a>
+                <a href="javascript:void(0)" class="js-tag color4">小知识</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">小知识</a>
+                <a href="javascript:void(0)" class="js-tag color3">学习</a>
               </li>
             
             <div class="clearfix"></div>
@@ -505,6 +517,26 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
     	</section>
     
 
+    
+    	<section class="tools-section tools-section-friends" q-show="friends">
+  		
+        <ul class="search-ul">
+          
+            <li class="search-li">
+              <a href="http://www.cnblogs.com/hmBlog/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>博客园</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="http://www.jianshu.com/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>简书</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="https://segmentfault.com/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>segmentfault</a>
+            </li>
+          
+        </ul>
+  		
+    	</section>
     
 
     
