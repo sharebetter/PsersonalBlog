@@ -9,16 +9,16 @@
   <title>ZhmBlog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="这是描述部分">
-<meta name="keywords" content="JavaScript,Ajax">
+<meta name="keywords" content="JavaScript">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ajax本地跨域请求以及解决方法">
-<meta property="og:url" content="http://yoursite.com/2017/11/18/ajax本地跨域请求以及解决方法/index.html">
+<meta property="og:title" content="浅拷贝与深拷贝">
+<meta property="og:url" content="http://yoursite.com/2017/10/19/secondfile/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="这是描述部分">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-11-18T11:31:23.289Z">
+<meta property="og:updated_time" content="2017-11-19T03:20:14.855Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ajax本地跨域请求以及解决方法">
+<meta name="twitter:title" content="浅拷贝与深拷贝">
 <meta name="twitter:description" content="这是描述部分">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -150,43 +150,51 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-ajax本地跨域请求以及解决方法" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-secondfile" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      ajax本地跨域请求以及解决方法
+      浅拷贝与深拷贝
     </h1>
   
 
         
-        <a href="/2017/11/18/ajax本地跨域请求以及解决方法/" class="archive-article-date">
-  	<time datetime="2017-11-18T08:40:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-18</time>
+        <a href="/2017/10/19/secondfile/" class="archive-article-date">
+  	<time datetime="2017-10-19T03:10:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-19</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="什么是跨域？"><a href="#什么是跨域？" class="headerlink" title="什么是跨域？"></a>什么是跨域？</h2><p>  我们通常所说的跨域是狭义的，是由浏览器同源策略限制的一类请求场景。所谓同源是指”协议+域名+端口”三者相同，即便两个不同的域名指向同一个ip地址，也非同源，只要没有同时满足这三个条件的请求即为跨域请求，跨域请求控制台一般会出现类似错误:<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">XMLHttpRequest cannot load http://xxxxx.php.</div><div class="line">No &apos;Access-Control-Allow-Origin&apos; header is present on the requested resource.</div><div class="line">Origin &apos;http://xxx&apos; is therefore not allowed access.</div></pre></td></tr></table></figure></p>
-<h2 id="设置本地跨域"><a href="#设置本地跨域" class="headerlink" title="设置本地跨域"></a>设置本地跨域</h2><p>  首先我们在本地设置本地跨域请求，首先需要安装wamp服务器,其默认的localhost端口为80，我们找到wamp的安装路径，如我的是安装在D盘，则在D:\wamp\bin\apache  \apache2.4.9\conf\中打开httpd.conf文件，在Listen [::0]:80语句下添加Listen [::0]:8011，点击保存，重启wamp或Apach，这样我们就配置了一个localhost:8011端口。接下来在wamp\www文件夹中新建test1和test2文件夹，在test1下新建index文件，在test2文件夹下新建index2.php文件。</p>
-<h3 id="方法一："><a href="#方法一：" class="headerlink" title="方法一："></a>方法一：</h3><p>1）test1/index.html文件js代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line">   $(function()&#123;</div><div class="line">        $.ajax( &#123;</div><div class="line">            url: &quot;http://localhost:8011/test2/index2.php&quot;,</div><div class="line">            type: &apos;get&apos;,</div><div class="line">           dataType: &apos;jsonp&apos;, // 请求方式为jsonp</div><div class="line">           jsonpCallback: &quot;onBack&quot;, // 自定义回调函数名</div><div class="line">           success: function(data)&#123;</div><div class="line">              console.info(data)</div><div class="line">           &#125;</div><div class="line">       &#125;);</div><div class="line"> &#125;);</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
-<p>2）test2/index2.php文件代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line">     $callback=$_GET[&apos;callback&apos;];</div><div class="line">     $data=array(&apos;a&apos;=&gt;1,&apos;b&apos;=&gt;2,&apos;c&apos;=&gt;3);</div><div class="line">     echo $callback.&apos;(&apos;.json_encode($data).&apos;)&apos;;</div><div class="line">?&gt;</div></pre></td></tr></table></figure></p>
-<p>这样就可以进行ajax访问了。</p>
-<h3 id="方法二："><a href="#方法二：" class="headerlink" title="方法二："></a>方法二：</h3><p>1）test1/index.html文件js代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line">  function dosomething(jsondata)&#123;</div><div class="line">        console.log(jsondata)</div><div class="line">  &#125;</div><div class="line">&lt;/script&gt;</div><div class="line">&lt;script src=&quot;http://localhost:8011/test2/index2.php?callback=dosomething&quot;&gt;&lt;/script&gt;</div></pre></td></tr></table></figure></p>
-<p>2）test2/index2.php文件代码同方法一的test2/index2.php</p>
-<p>这样第二种方法也ok</p>
-<h3 id="方法三："><a href="#方法三：" class="headerlink" title="方法三："></a>方法三：</h3><p>1）test1/index.html文件js代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">$.ajax(&#123;</div><div class="line">     url: &apos;http://localhost:8011/test2/index2.php?callback=myFunction&apos;,</div><div class="line">     type: &apos;get&apos;,</div><div class="line">     data: &#123;&#125;,</div><div class="line">     success: function(json)&#123;</div><div class="line">     console.log(json)</div><div class="line">     &#125;,</div><div class="line">     error: function()&#123;</div><div class="line">     alert(&apos;fail&apos;);</div><div class="line">     &#125;</div><div class="line"> &#125;);</div></pre></td></tr></table></figure></p>
-<p>2）test2/index2.php文件代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line">     header(&apos;Access-Control-Allow-Origin:*&apos;);</div><div class="line">     $callback=$_GET[&apos;callback&apos;];</div><div class="line">     $data=array(&apos;a&apos;=&gt;1,&apos;b&apos;=&gt;2,&apos;c&apos;=&gt;3);</div><div class="line">     echo $callback.&apos;(&apos;.json_encode($data).&apos;)&apos;;</div><div class="line">?&gt;</div></pre></td></tr></table></figure></p>
-<p>这样第三种方法也行啦</p>
-<h2 id="请求方式："><a href="#请求方式：" class="headerlink" title="请求方式："></a>请求方式：</h2><p>1）在html的ajax请求中dataType: ‘jsonp’,这句是关键，没有这句就没法进行ajax请求。这也就是jsonp的跨域请求方式。缺点就是只能通过GET的请求方法，不能用POST。</p>
-<p>2）第二种方法是利用script的src不受同源限制，进行的方法回调进行跨域请求。</p>
-<p>3）第三种方法是跨域资源共享（CORS），通过在请求文件添加header(‘Access-Control-Allow-Origin:*’);[//指定允许其他域名访问]实现跨域的，可以多种请求方法。</p>
-<p>4）还有其他的方法，这边就不一 一讲述啦，如有需要大家可以参考其他优秀文章</p>
-<h2 id="结语："><a href="#结语：" class="headerlink" title="结语："></a>结语：</h2><p>新人学习ajax跨域的小测试，如有不足之处，欢迎指正哈！</p>
-<h4 id="github下载地址：https-github-com-sharebetter-ajax"><a href="#github下载地址：https-github-com-sharebetter-ajax" class="headerlink" title="github下载地址：https://github.com/sharebetter/ajax"></a>github下载地址：<a href="https://github.com/sharebetter/ajax" target="_blank" rel="external">https://github.com/sharebetter/ajax</a></h4>
+        <h1 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h1><h1 id="浅拷贝"><a href="#浅拷贝" class="headerlink" title="浅拷贝"></a>浅拷贝</h1><ul>
+<li>对于字符串类型，浅拷贝是对值的复制;</li>
+<li>对于对象或数组来说，浅拷贝 是对对象地址的复制，并没有开辟新的栈。就是将一个对象的内存地址的“编号”拷贝给另一个对象。 只复制一层对象的属性</li>
+</ul>
+<a id="more"></a>
+<p>#深拷贝</p>
+<ul>
+<li>实现原理:先新建一个空对象，内存中新开辟一块地址，把被复制对象的所有可枚举的(注意可枚举的对象)属性方法一一复制过来，注意要用递归来复制子对象里面的所有属性和方法，直到子子…..属性为基本数据类型。</li>
+</ul>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ul>
+<li>深拷贝理解两点:1. 新开辟内存地址，2,递归来刨根复制。</li>
+</ul>
+<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><h1 id="浅拷贝-1"><a href="#浅拷贝-1" class="headerlink" title="浅拷贝"></a>浅拷贝</h1><blockquote>
+<p>在Javascript 中，将一个对象赋值给一个变量其实只是将这个对象的引用拷贝了一份<br>假设这么一段代码<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var man = &#123;   </div><div class="line">     name: 'aepkill',   </div><div class="line">     sex: 'male'</div><div class="line">&#125;;</div><div class="line">var superMan = man;</div></pre></td></tr></table></figure></p>
+</blockquote>
+<p>  并没有创建一个新的对象实体，而是仅仅拷贝了这种引用关系。<br>所以假设执行 man.name = ‘aotuman’ ，那么superMan.name的值也会变成 ‘aotuman’，因为其实他们引用的是同一个对象实体。</p>
+<blockquote>
+<p>很多场景下并不希望出现像上面中那样， 我们希望能使两个变量相互独立，不再引用同一个对象<br>这很容易实现，只需要申明一个新的对象，然后将这个对象的所有字段原封不动拷贝过去即可：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">function copy(obj)&#123;</div><div class="line">     //创建一个新对象</div><div class="line">     let newObj = &#123;&#125;;</div><div class="line">     //返回keys数组，包含obj所有可枚举的自身属性名</div><div class="line">     let keys = Object.keys(obj),key=null;</div><div class="line">     for(let i =0;i&lt;keys.length;i++)&#123;</div><div class="line">          key = keys[i];</div><div class="line">          //将obj所有属性复制到新对象</div><div class="line">          newObj[key] = obj[key];</div><div class="line">     &#125;</div><div class="line">     return newObj;</div><div class="line">&#125;</div><div class="line">var people = &#123;</div><div class="line">     name:&apos;java&apos;,</div><div class="line">     age:22</div><div class="line">&#125;</div><div class="line">var hero = copy(people);</div><div class="line">people.name = &apos;javascript&apos;;</div><div class="line">console.log(people.name); //javascript</div><div class="line">console.log(hero.name); // java</div></pre></td></tr></table></figure></p>
+<p>两个变量已经不在引用同一个对象，二者的修改是相互独立的深拷贝<br>上面已经完成了基本的拷贝，但是只拷贝了第一层的关系，如果对象不止一层的话，上面的函数就不适用了：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">var people = &#123;</div><div class="line">     name: &apos;java&apos;,</div><div class="line">     age: 22,</div><div class="line">     concat:&#123;</div><div class="line">          tel:&apos;1568552256&apos;,</div><div class="line">          qq:&apos;54666651&apos;</div><div class="line">     &#125;</div><div class="line">&#125;</div><div class="line">var hero = copy(people);</div><div class="line">people.concat.tel = &apos;1111111111&apos;;</div><div class="line">console.log(people.concat.tel); //1111111111</div><div class="line">console.log(hero.concat.tel); // 1111111111</div></pre></td></tr></table></figure></p>
+</blockquote>
+<p>  因为只拷贝了一层，所以people 与 hero 中的concat 字段还是引用同一个对象，所以当执行 people.concat.tel = ‘1111111111’ 后，hero .concat.tel 也变成了 ‘1111111111 ‘ ，该如何解决这个问题呢？</p>
+<p>  此时， 需要对这个问题进行梳理并抽象：定义一个函数deepCopy，该函数遍历传入的对象，如果该字段的值不是一个对象则可直接赋值给新对象，否则对该字段用函数deepCopy进行递归操作。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">function deepCopy(obj) &#123;</div><div class="line">     let newObj = &#123;&#125;</div><div class="line">     let keys = Object.keys(obj),</div><div class="line">                    key = null,</div><div class="line">                    temp = null;</div><div class="line">     for (let i = 0; i &lt; keys.length; i++) &#123;</div><div class="line">          key = keys[i];</div><div class="line">          temp = obj[key];</div><div class="line">          // 如果字段的值也是一个对象则递归操作</div><div class="line">          if (temp &amp;&amp; typeof temp === &apos;object&apos;) &#123;</div><div class="line">               newObj[key] = deepCopy(temp);</div><div class="line">          &#125; else &#123;</div><div class="line">               // 否则直接赋值给新对象</div><div class="line">               newObj[key] = temp;</div><div class="line">          &#125;</div><div class="line">     &#125;</div><div class="line">     return newObj;</div><div class="line">&#125;</div><div class="line">var people = &#123;</div><div class="line">     name: &apos;java&apos;,</div><div class="line">     age: 22,</div><div class="line">     concat: &#123;</div><div class="line">          tel: &apos;1568552256&apos;,</div><div class="line">          qq: &apos;54666651&apos;</div><div class="line">     &#125;</div><div class="line">&#125;</div><div class="line">var hero = deepCopy(people);</div><div class="line">people.concat.tel = &apos;1111111111&apos;;</div><div class="line">console.log(people.concat.tel);//1111111111</div><div class="line">console.log(hero.concat.tel);// 1568552256</div></pre></td></tr></table></figure></p>
+<p>OK,deepCopy 函数可以拷贝任意深度的对象了</p>
+<pre><code>参考链接：https://zhuanlan.zhihu.com/p/23251162?utm_source=qq&amp;utm_medium=social
+</code></pre>
       
 
       
@@ -231,10 +239,6 @@
 			 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Ajax</a>
         		</li>
       		
 		</ul>
@@ -301,7 +305,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/11/18/ajax本地跨域请求以及解决方法/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/10/19/secondfile/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -315,17 +319,17 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/11/18/markdown/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/11/10/ajax本地跨域请求以及解决方法/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          markdown学习
+          ajax本地跨域请求以及解决方法
         
       </div>
     </a>
   
   
-    <a href="/2017/11/18/thirdfile/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017/10/18/thirdfile/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">学习计算机的体会与认识</div>
       <i class="icon-circle-right"></i>
     </a>
@@ -356,7 +360,9 @@
   
 
   
-  <div id="SOHUCS" sid="ajax本地跨域请求以及解决方法" ></div> 
+
+  
+  <div id="SOHUCS" sid="secondfile" ></div> 
 <script type="text/javascript"> 
 window.YiliaChangyanWrap = function() {
     var appid = "cytk2GvkY"; 

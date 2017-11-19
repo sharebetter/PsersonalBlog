@@ -8,18 +8,17 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>ZhmBlog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="这是描述部分">
-<meta name="keywords" content="JavaScript">
+  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
 <meta property="og:type" content="article">
-<meta property="og:title" content="浅拷贝与深拷贝">
-<meta property="og:url" content="http://yoursite.com/2017/10/15/secondfile/index.html">
+<meta property="og:title" content="Hello World">
+<meta property="og:url" content="http://yoursite.com/2017/09/10/hello-world/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="这是描述部分">
+<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-11-18T13:51:34.275Z">
+<meta property="og:updated_time" content="2017-11-19T03:20:29.040Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="浅拷贝与深拷贝">
-<meta name="twitter:description" content="这是描述部分">
+<meta name="twitter:title" content="Hello World">
+<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -150,51 +149,36 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-secondfile" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-hello-world" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      浅拷贝与深拷贝
+      Hello World
     </h1>
   
 
         
-        <a href="/2017/10/15/secondfile/" class="archive-article-date">
-  	<time datetime="2017-10-15T03:10:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-15</time>
+        <a href="/2017/09/10/hello-world/" class="archive-article-date">
+  	<time datetime="2017-09-10T08:20:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-10</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h1><h1 id="浅拷贝"><a href="#浅拷贝" class="headerlink" title="浅拷贝"></a>浅拷贝</h1><ul>
-<li>对于字符串类型，浅拷贝是对值的复制;</li>
-<li>对于对象或数组来说，浅拷贝 是对对象地址的复制，并没有开辟新的栈。就是将一个对象的内存地址的“编号”拷贝给另一个对象。 只复制一层对象的属性</li>
-</ul>
-<a id="more"></a>
-<p>#深拷贝</p>
-<ul>
-<li>实现原理:先新建一个空对象，内存中新开辟一块地址，把被复制对象的所有可枚举的(注意可枚举的对象)属性方法一一复制过来，注意要用递归来复制子对象里面的所有属性和方法，直到子子…..属性为基本数据类型。</li>
-</ul>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ul>
-<li>深拷贝理解两点:1. 新开辟内存地址，2,递归来刨根复制。</li>
-</ul>
-<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><h1 id="浅拷贝-1"><a href="#浅拷贝-1" class="headerlink" title="浅拷贝"></a>浅拷贝</h1><blockquote>
-<p>在Javascript 中，将一个对象赋值给一个变量其实只是将这个对象的引用拷贝了一份<br>假设这么一段代码<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var man = &#123;   </div><div class="line">     name: 'aepkill',   </div><div class="line">     sex: 'male'</div><div class="line">&#125;;</div><div class="line">var superMan = man;</div></pre></td></tr></table></figure></p>
-</blockquote>
-<p>  并没有创建一个新的对象实体，而是仅仅拷贝了这种引用关系。<br>所以假设执行 man.name = ‘aotuman’ ，那么superMan.name的值也会变成 ‘aotuman’，因为其实他们引用的是同一个对象实体。</p>
-<blockquote>
-<p>很多场景下并不希望出现像上面中那样， 我们希望能使两个变量相互独立，不再引用同一个对象<br>这很容易实现，只需要申明一个新的对象，然后将这个对象的所有字段原封不动拷贝过去即可：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">function copy(obj)&#123;</div><div class="line">     //创建一个新对象</div><div class="line">     let newObj = &#123;&#125;;</div><div class="line">     //返回keys数组，包含obj所有可枚举的自身属性名</div><div class="line">     let keys = Object.keys(obj),key=null;</div><div class="line">     for(let i =0;i&lt;keys.length;i++)&#123;</div><div class="line">          key = keys[i];</div><div class="line">          //将obj所有属性复制到新对象</div><div class="line">          newObj[key] = obj[key];</div><div class="line">     &#125;</div><div class="line">     return newObj;</div><div class="line">&#125;</div><div class="line">var people = &#123;</div><div class="line">     name:&apos;java&apos;,</div><div class="line">     age:22</div><div class="line">&#125;</div><div class="line">var hero = copy(people);</div><div class="line">people.name = &apos;javascript&apos;;</div><div class="line">console.log(people.name); //javascript</div><div class="line">console.log(hero.name); // java</div></pre></td></tr></table></figure></p>
-<p>两个变量已经不在引用同一个对象，二者的修改是相互独立的深拷贝<br>上面已经完成了基本的拷贝，但是只拷贝了第一层的关系，如果对象不止一层的话，上面的函数就不适用了：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">var people = &#123;</div><div class="line">     name: &apos;java&apos;,</div><div class="line">     age: 22,</div><div class="line">     concat:&#123;</div><div class="line">          tel:&apos;1568552256&apos;,</div><div class="line">          qq:&apos;54666651&apos;</div><div class="line">     &#125;</div><div class="line">&#125;</div><div class="line">var hero = copy(people);</div><div class="line">people.concat.tel = &apos;1111111111&apos;;</div><div class="line">console.log(people.concat.tel); //1111111111</div><div class="line">console.log(hero.concat.tel); // 1111111111</div></pre></td></tr></table></figure></p>
-</blockquote>
-<p>  因为只拷贝了一层，所以people 与 hero 中的concat 字段还是引用同一个对象，所以当执行 people.concat.tel = ‘1111111111’ 后，hero .concat.tel 也变成了 ‘1111111111 ‘ ，该如何解决这个问题呢？</p>
-<p>  此时， 需要对这个问题进行梳理并抽象：定义一个函数deepCopy，该函数遍历传入的对象，如果该字段的值不是一个对象则可直接赋值给新对象，否则对该字段用函数deepCopy进行递归操作。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">function deepCopy(obj) &#123;</div><div class="line">     let newObj = &#123;&#125;</div><div class="line">     let keys = Object.keys(obj),</div><div class="line">                    key = null,</div><div class="line">                    temp = null;</div><div class="line">     for (let i = 0; i &lt; keys.length; i++) &#123;</div><div class="line">          key = keys[i];</div><div class="line">          temp = obj[key];</div><div class="line">          // 如果字段的值也是一个对象则递归操作</div><div class="line">          if (temp &amp;&amp; typeof temp === &apos;object&apos;) &#123;</div><div class="line">               newObj[key] = deepCopy(temp);</div><div class="line">          &#125; else &#123;</div><div class="line">               // 否则直接赋值给新对象</div><div class="line">               newObj[key] = temp;</div><div class="line">          &#125;</div><div class="line">     &#125;</div><div class="line">     return newObj;</div><div class="line">&#125;</div><div class="line">var people = &#123;</div><div class="line">     name: &apos;java&apos;,</div><div class="line">     age: 22,</div><div class="line">     concat: &#123;</div><div class="line">          tel: &apos;1568552256&apos;,</div><div class="line">          qq: &apos;54666651&apos;</div><div class="line">     &#125;</div><div class="line">&#125;</div><div class="line">var hero = deepCopy(people);</div><div class="line">people.concat.tel = &apos;1111111111&apos;;</div><div class="line">console.log(people.concat.tel);//1111111111</div><div class="line">console.log(hero.concat.tel);// 1568552256</div></pre></td></tr></table></figure></p>
-<p>OK,deepCopy 函数可以拷贝任意深度的对象了</p>
-<pre><code>参考链接：https://zhuanlan.zhihu.com/p/23251162?utm_source=qq&amp;utm_medium=social
-</code></pre>
+        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a><br><a id="more"></a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+
       
 
       
@@ -233,29 +217,7 @@
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/前端知识//" class="article-tag-list-link color5">前端知识</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
 
       
 
@@ -305,7 +267,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/10/15/secondfile/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/09/10/hello-world/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -319,20 +281,15 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/11/18/thirdfile/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/10/15/markdown/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          学习计算机的体会与认识
+          markdown学习
         
       </div>
     </a>
   
-  
-    <a href="/2017/09/11/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Hello World</div>
-      <i class="icon-circle-right"></i>
-    </a>
   
 </nav>
 
@@ -360,7 +317,9 @@
   
 
   
-  <div id="SOHUCS" sid="secondfile" ></div> 
+
+  
+  <div id="SOHUCS" sid="hello-world" ></div> 
 <script type="text/javascript"> 
 window.YiliaChangyanWrap = function() {
     var appid = "cytk2GvkY"; 
