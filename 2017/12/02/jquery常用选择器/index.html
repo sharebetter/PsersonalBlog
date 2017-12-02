@@ -6,18 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: 小知识 | zhmBlog</title>
+  <title>Jquery常用的选择器 | zhmBlog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="To be a better me!">
-<meta property="og:type" content="website">
-<meta property="og:title" content="zhmBlog">
-<meta property="og:url" content="http://yoursite.com/tags/小知识/index.html">
+  <meta name="description" content="选择器 实例 选取     .class $(“.intro”) class=”intro” 的所有元素   .class,.class $(“.intro,.demo”) class 为 “intro” 或 “demo” 的所有元素   element $(“p”) 所有 &amp;lt; p &amp;gt; 元素   el1,el2,el3 $(“h1,div,p”) 所有&amp;lt; h1 &amp;gt;、&amp;">
+<meta name="keywords" content="Jquery,学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Jquery常用的选择器">
+<meta property="og:url" content="http://yoursite.com/2017/12/02/jquery常用选择器/index.html">
 <meta property="og:site_name" content="zhmBlog">
-<meta property="og:description" content="To be a better me!">
+<meta property="og:description" content="选择器 实例 选取     .class $(“.intro”) class=”intro” 的所有元素   .class,.class $(“.intro,.demo”) class 为 “intro” 或 “demo” 的所有元素   element $(“p”) 所有 &amp;lt; p &amp;gt; 元素   el1,el2,el3 $(“h1,div,p”) 所有&amp;lt; h1 &amp;gt;、&amp;">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-12-02T04:25:03.222Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="zhmBlog">
-<meta name="twitter:description" content="To be a better me!">
+<meta name="twitter:title" content="Jquery常用的选择器">
+<meta name="twitter:description" content="选择器 实例 选取     .class $(“.intro”) class=”intro” 的所有元素   .class,.class $(“.intro,.demo”) class 为 “intro” 或 “demo” 的所有元素   element $(“p”) 所有 &amp;lt; p &amp;gt; 元素   el1,el2,el3 $(“h1,div,p”) 所有&amp;lt; h1 &amp;gt;、&amp;">
   
     <link rel="alternative" href="/atom.xml" title="zhmBlog" type="application/atom+xml">
   
@@ -156,75 +158,525 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-jquery常用选择器" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/10/15/markdown/" class="archive-article-date">
-  	<time datetime="2017-10-15T12:41:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-15</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/10/15/markdown/">markdown学习</a>
+    <h1 class="article-title" itemprop="name">
+      Jquery常用的选择器
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/12/02/jquery常用选择器/" class="archive-article-date">
+  	<time datetime="2017-12-02T03:10:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <table>
+<thead>
+<tr>
+<th>选择器</th>
+<th style="text-align:center">实例</th>
+<th style="text-align:right">选取</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.class</td>
+<td style="text-align:center">$(“.intro”)</td>
+<td style="text-align:right">class=”intro” 的所有元素</td>
+</tr>
+<tr>
+<td>.class,.class</td>
+<td style="text-align:center">$(“.intro,.demo”)</td>
+<td style="text-align:right">class 为 “intro” 或 “demo” 的所有元素</td>
+</tr>
+<tr>
+<td>element</td>
+<td style="text-align:center">$(“p”)</td>
+<td style="text-align:right">所有 &lt; p &gt; 元素</td>
+</tr>
+<tr>
+<td>el1,el2,el3</td>
+<td style="text-align:center">$(“h1,div,p”)</td>
+<td style="text-align:right">所有&lt; h1 &gt;、&lt; div &gt; 和 &lt; p &gt; 元素</td>
+</tr>
+<tr>
+<td>:first</td>
+<td style="text-align:center">$(“p:first”)</td>
+<td style="text-align:right">第一个&lt; p &gt; 元素</td>
+</tr>
+<tr>
+<td>:last</td>
+<td style="text-align:center">$(“p:last”)</td>
+<td style="text-align:right">最后一个&lt; p &gt;元素</td>
+</tr>
+<tr>
+<td>:even</td>
+<td style="text-align:center">$(“tr:even”)</td>
+<td style="text-align:right">所有偶数&lt; tr &gt;元素，索引值从 0   开始，第一个元素是偶数 (0)，第二个元素是奇数 (1)，以此类推。</td>
+</tr>
+<tr>
+<td>:odd</td>
+<td style="text-align:center">$(“tr:odd”)</td>
+<td style="text-align:right">所有奇数&lt; tr &gt;元素，索引值从 0  开始，第一个元素是偶数 (0)，第二个元素是奇数 (1)，以此类推。</td>
+</tr>
+</tbody>
+</table>
+<a id="more"></a>
+<table>
+<thead>
+<tr>
+<th></th>
+<th style="text-align:center"></th>
+<th style="text-align:right"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>:first-child</td>
+<td style="text-align:center">$(“p:first-child”)</td>
+<td style="text-align:right">属于其父元素的第一个子元素的所有&lt; p &gt;元素</td>
+</tr>
+<tr>
+<td>:first-of-type</td>
+<td style="text-align:center">(“p:first-of-type”)</td>
+<td style="text-align:right">属于其父元素的第一个&lt; p &gt;元素的所有 p 元素</td>
+</tr>
+<tr>
+<td>:last-child</td>
+<td style="text-align:center">$(“p:last-child”)</td>
+<td style="text-align:right">属于其父元素的最后一个子元素的所有&lt; p &gt;元素 </td>
+</tr>
+<tr>
+<td>:last-of-type</td>
+<td style="text-align:center">$(“p:last-of-type”)</td>
+<td style="text-align:right">属于其父元素的最后一个&lt; p &gt; 元素的所有&lt; p &gt;元素</td>
+</tr>
+<tr>
+<td>:nth-child(n)</td>
+<td style="text-align:center">　$(“p:nth-child(2)”)</td>
+<td style="text-align:right">属于其父元素的第二个子元素的所有 &lt; 　p　 &gt; 元素</td>
+</tr>
+<tr>
+<td>:nth-last-child(n)</td>
+<td style="text-align:center">$(“p:nth-last-child(2)”)</td>
+<td style="text-align:right">属于其父元素的第二个子元素的所有 &lt; p &gt;元素，从最后一个子元素开始计数</td>
+</tr>
+<tr>
+<td>:nth-of-type(n)</td>
+<td style="text-align:center">$(“p:nth-of-type(2)”)</td>
+<td style="text-align:right">属于其父元素的第二个 &lt; p &gt; 元素的所有 &lt; p &gt; 元素</td>
+</tr>
+<tr>
+<td>:nth-last-of-type(n)</td>
+<td style="text-align:center">$(“p:nth-last-of-type(2)”)</td>
+<td style="text-align:right">属于其父元素的第二个 &lt; p &gt; 元素的所有 &lt; p &gt; 元素，从最后一个子元素开始计数</td>
+</tr>
+<tr>
+<td>:only-child</td>
+<td style="text-align:center">$(“p:only-child”)</td>
+<td style="text-align:right">属于其父元素的唯一子元素的所有 &lt; p &gt; 元素</td>
+</tr>
+<tr>
+<td>:only-of-type</td>
+<td style="text-align:center">$(“p:only-of-type”)</td>
+<td style="text-align:right">属于其父元素的特定类型的唯一子元素的所有 &lt; p &gt; 元素</td>
+</tr>
+<tr>
+<td>parent &gt; child</td>
+<td style="text-align:center">$(“div &gt; p”)</td>
+<td style="text-align:right">&lt; div &gt; 元素的直接子元素的所有 &lt; p &gt; 元素</td>
+</tr>
+<tr>
+<td>parent descendant</td>
+<td style="text-align:center">$(“div p”)</td>
+<td style="text-align:right">&lt; div &gt; 元素的后代的所有 &lt; p &gt; 元素</td>
+</tr>
+<tr>
+<td>element + next</td>
+<td style="text-align:center">$(“div + p”)</td>
+<td style="text-align:right">每个 &lt; div &gt; 元素相邻的下一个 &lt; p &gt; 元素</td>
+</tr>
+<tr>
+<td>element ~ siblings</td>
+<td style="text-align:center">$(“div ~ p”)</td>
+<td style="text-align:right">&lt; div &gt; 元素同级的所有 &lt; p &gt; 元素</td>
+</tr>
+<tr>
+<td>:eq(index)</td>
+<td style="text-align:center">$(“ul li:eq(3)”)</td>
+<td style="text-align:right">列表中的第四个元素（index 值从 0 开始）</td>
+</tr>
+<tr>
+<td>:gt(no)</td>
+<td style="text-align:center">$(“ul li:gt(3)”)</td>
+<td style="text-align:right">列举 index 大于 3 的元素</td>
+</tr>
+<tr>
+<td>:lt(no)</td>
+<td style="text-align:center">$(“ul li:lt(3)”)</td>
+<td style="text-align:right">列举 index 小于 3 的元素</td>
+</tr>
+<tr>
+<td>:not(selector)</td>
+<td style="text-align:center">$(“input:not(:empty)”)</td>
+<td style="text-align:right">所有不为空的输入元素</td>
+</tr>
+<tr>
+<td>:header</td>
+<td style="text-align:center">$(“:header”)</td>
+<td style="text-align:right">所有标题元素 &lt; h1 &gt;, &lt; h2 &gt; …</td>
+</tr>
+<tr>
+<td>:animated</td>
+<td style="text-align:center">$(“:animated”)</td>
+<td style="text-align:right">所有动画元素</td>
+</tr>
+<tr>
+<td>:focus</td>
+<td style="text-align:center">$(“:focus”)</td>
+<td style="text-align:right">当前具有焦点的元素</td>
+</tr>
+<tr>
+<td>:contains(text)</td>
+<td style="text-align:center">$(“:contains(‘Hello’)”)</td>
+<td style="text-align:right">所有包含文本 “Hello” 的元素</td>
+</tr>
+<tr>
+<td>:has(selector)</td>
+<td style="text-align:center">$(“div:has(p)”)</td>
+<td style="text-align:right">所有包含有 &lt; p &gt; 元素在其内的 &lt; div &gt; 元素</td>
+</tr>
+<tr>
+<td>:empty</td>
+<td style="text-align:center">$(“:empty”)</td>
+<td style="text-align:right">所有空元素</td>
+</tr>
+<tr>
+<td>:parent</td>
+<td style="text-align:center">$(“:parent”)</td>
+<td style="text-align:right">匹配含有子元素或者文本的元素。</td>
+</tr>
+<tr>
+<td>:hidden</td>
+<td style="text-align:center">$(“p:hidden”)</td>
+<td style="text-align:right">所有隐藏的 &lt; p &gt; 元素</td>
+</tr>
+<tr>
+<td>:visible</td>
+<td style="text-align:center">$(“table:visible”)</td>
+<td style="text-align:right">所有可见的表格</td>
+</tr>
+<tr>
+<td>:root</td>
+<td style="text-align:center">$(“:root”)</td>
+<td style="text-align:right">文档的根元素</td>
+</tr>
+<tr>
+<td>:lang(language)</td>
+<td style="text-align:center">$(“p:lang(de)”)</td>
+<td style="text-align:right">所有带有以 “de” 开头的 lang 属性值的 &lt; p &gt; 元素</td>
+</tr>
+<tr>
+<td>[attribute]</td>
+<td style="text-align:center">$(“[href]”)</td>
+<td style="text-align:right">所有带有 href 属性的元素</td>
+</tr>
+<tr>
+<td>[attribute=value]</td>
+<td style="text-align:center">$(“[href=’default.htm’]”)</td>
+<td style="text-align:right">所有带有 href 属性且值等于 “default.htm” 的元素</td>
+</tr>
+<tr>
+<td>[attribute!=value]</td>
+<td style="text-align:center">$(“[href!=’default.htm’]”)</td>
+<td style="text-align:right">所有带有 href 属性且值不等于 “default.htm” 的元素</td>
+</tr>
+<tr>
+<td>[attribute^=value]</td>
+<td style="text-align:center">$(“[title^=’Tom’]”)</td>
+<td style="text-align:right">所有带有 title 属性且值以 “Tom” 开头的元素</td>
+</tr>
+<tr>
+<td>[attribute~=value]</td>
+<td style="text-align:center">$(“[title~=’hello’]”)</td>
+<td style="text-align:right">所有带有 title 属性且值包含单词 “hello” 的元素</td>
+</tr>
+<tr>
+<td>[attribute*=value]</td>
+<td style="text-align:center">$(“[title*=’hello’]”)</td>
+<td style="text-align:right">所有带有 title 属性且值包含字符串 “hello” 的元素</td>
+</tr>
+<tr>
+<td>:input</td>
+<td style="text-align:center">$(“:input”)</td>
+<td style="text-align:right">所有 input 元素</td>
+</tr>
+<tr>
+<td>:text</td>
+<td style="text-align:center">$(“:text”)</td>
+<td style="text-align:right">所有带有 type=”text” 的 input 元素</td>
+</tr>
+<tr>
+<td>:password</td>
+<td style="text-align:center">$(“:password”)</td>
+<td style="text-align:right">所有带有 type=”password” 的 input 元素</td>
+</tr>
+<tr>
+<td>:radio</td>
+<td style="text-align:center">$(“:radio”)</td>
+<td style="text-align:right">所有带有 type=”radio” 的 input 元素</td>
+</tr>
+<tr>
+<td>:checkbox</td>
+<td style="text-align:center">$(“:checkbox”)</td>
+<td style="text-align:right">所有带有 type=”checkbox” 的 input 元素</td>
+</tr>
+<tr>
+<td>:submit</td>
+<td style="text-align:center">$(“:submit”)</td>
+<td style="text-align:right">所有带有 type=”submit” 的 input 元素</td>
+</tr>
+<tr>
+<td>:reset</td>
+<td style="text-align:center">$(“:reset”)</td>
+<td style="text-align:right">所有带有 type=”reset” 的 input 元素</td>
+</tr>
+<tr>
+<td>:button</td>
+<td style="text-align:center">$(“:button”)</td>
+<td style="text-align:right">所有带有 type=”button” 的 input 元素</td>
+</tr>
+<tr>
+<td>:image</td>
+<td style="text-align:center">$(“:image”)</td>
+<td style="text-align:right">所有带有 type=”image” 的 input 元素</td>
+</tr>
+<tr>
+<td>:file</td>
+<td style="text-align:center">$(“:file”)</td>
+<td style="text-align:right">所有带有 type=”file” 的 input 元素</td>
+</tr>
+<tr>
+<td>:enabled</td>
+<td style="text-align:center">$(“:enabled”)</td>
+<td style="text-align:right">所有启用的元素</td>
+</tr>
+<tr>
+<td>:disabled</td>
+<td style="text-align:center">$(“:disabled”)</td>
+<td style="text-align:right">所有禁用的元素</td>
+</tr>
+<tr>
+<td>:selected</td>
+<td style="text-align:center">$(“:selected”)</td>
+<td style="text-align:right">所有选定的下拉列表元素</td>
+</tr>
+<tr>
+<td>:checked</td>
+<td style="text-align:center">$(“:checked”)</td>
+<td style="text-align:right">所有选中的复选框选项</td>
+</tr>
+<tr>
+<td>.selector</td>
+<td style="text-align:center">$(selector).selector</td>
+<td style="text-align:right">在jQuery 1.7中已经不被赞成使用。返回传给jQuery()的原始选择器</td>
+</tr>
+<tr>
+<td>:target</td>
+<td style="text-align:center">$( “p:target” )</td>
+<td style="text-align:right">选择器将选中ID和URI中一个格式化的标识符相匹配的&lt; p &gt;元素属于其父元素的唯一子元素的所有 &lt; p &gt; 元素</td>
+</tr>
+</tbody>
+</table>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/weixinpay.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">学习</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Jquery</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">小知识</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">学习</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/随笔//" class="article-tag-list-link color3">随笔</a>
+        			<a href="/categories/前端知识//" class="article-tag-list-link color5">前端知识</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/12/02/jquery常用选择器/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2017/12/02/js的作用域与变量提升/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          js的作用域与变量提升
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2017/11/18/jquery动画 方法/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Jquery常用的选择器</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
+  
+  <!-- UY BEGIN -->
+<div id="uyan_frame"></div>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2149203"></script>
+<!-- UY END -->
   
 
-    
+  
+
+  
+
+  
+
+  
 
 
           </div>
@@ -247,9 +699,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
